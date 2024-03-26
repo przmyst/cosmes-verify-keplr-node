@@ -55,7 +55,7 @@ function resolveBech32Address(
 }
 
 function verifyADR36({
-    pubKey, data, signature, type
+    pubKey, data, signature
 }) {
 
     const msg = serialiseSignDoc({
@@ -80,17 +80,14 @@ function verifyADR36({
     return verifyECDSA({
         pubKey,
         data: msg,
-        signature,
-        type,
+        signature
     })
 }
 
 let result = verifyADR36({
     pubKey:  base64.decode('AoHNk8wJt6mpdSi1XJnUY9OzWkgu3D5QYdhBdyEX6Y+L'),
-    bech32Prefix: 'terra',
     data: utf8.decode('Sign this message to login'),
-    signature: base64.decode('OPphfghaBJC3tGNEqwuaG6+RM+uCyW8ozFiu1rw6KjQOpJldWwYut7v/5Ji5VjON6kn8aaOjCJcfzWuDFUcD3Q=='),
-    type: 'secp256k1'
+    signature: base64.decode('OPphfghaBJC3tGNEqwuaG6+RM+uCyW8ozFiu1rw6KjQOpJldWwYut7v/5Ji5VjON6kn8aaOjCJcfzWuDFUcD3Q==')
 })
 
 console.log(result)
