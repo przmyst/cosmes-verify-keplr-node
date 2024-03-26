@@ -47,11 +47,10 @@ function verifyECDSA({
 }
 
 function resolveBech32Address(
-    publicKey,
-    prefix
+    publicKey
 ){
     const address = ripemd160(sha256(publicKey))
-    return bech32.encode(prefix, bech32.toWords(address))
+    return bech32.encode('terra', bech32.toWords(address))
 }
 
 function verifyADR36({
@@ -70,7 +69,7 @@ function verifyADR36({
             {
                 type: 'sign/MsgSignData',
                 value: {
-                    signer: resolveBech32Address(pubKey, 'terra'),
+                    signer: resolveBech32Address(pubKey),
                     data: base64.encode(data)
                 },
             },
