@@ -9,7 +9,7 @@ const {
 } = require('@scure/base')
 const secp256k1 = require('@noble/secp256k1')
 
-function serialiseSignDoc(doc) {
+function serializeSignDoc(doc) {
     function sortObjectByKey(obj) {
         if (typeof obj !== 'object' || obj == null) {
             return obj
@@ -57,7 +57,7 @@ function verifyADR36({
     pubKey, data, signature
 }) {
 
-    const msg = serialiseSignDoc({
+    const msg = serializeSignDoc({
         chain_id: '',
         account_number: '0',
         sequence: '0',
